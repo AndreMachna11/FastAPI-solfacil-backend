@@ -1,6 +1,8 @@
 __pycache__/
 /__pycache__
+__pycache__
 
 .env
 Pipfile
 Pipfile.lock
+.pyc

@@ -18,12 +18,34 @@ async def redirect_to_docs():
     return RedirectResponse(url="/docs")
 
 @app.post("/atualizacaoParceiros")
-async def pergunta_com_arquivo(Body: BodyAtualizacaoParceiros,token: str = Depends(authenticate)):
+async def atualiza_banco_de_dados(Body: BodyAtualizacaoParceiros,token: str = Depends(authenticate)):
+    
     SERVICE = AtualizacaoBancoDeDadosService()
 
-    teste = SERVICE.first()
+    retorno = SERVICE.verifica_base_cnpjs(Body.url_csv_hosteado)
+    base_input = retorno[0]
+    validador = retorno[1]
 
-    return teste
+    if validador == False:
+        content = {"mensagem" : "CSV contem cpf na coluna cnpj ou esta vazio - Reveja seus dados", "response": {}}
+        return JSONResponse(content=content, status_code=400)
+
+    base_input = SERVICE.renomeia_colunas_data_frame(base_input)
+    SERVICE.atualiza_banco_de_dados_via_data_frame(base_input,'parceiros','cnpj')
+
+    base_ceps = SERVICE.pega_infs_ceps(base_input)
+    SERVICE.atualiza_banco_de_dados_via_data_frame(base_ceps,'infs_cep_parceiros','cep')
+    
+    content = {"mensagem" : "Sucesso", "response": {}}
+    return JSONResponse(content=content, status_code=200)
+
+@app.get("/ListagemParceiros")
+async def listagem(token: str = Depends(authenticate)):
+    
+    SERVICE = ListagemParceirosService()
+    parceiros_atuais = SERVICE.listagem()
+    
+    return JSONResponse(content=parceiros_atuais, status_code=200)
 
 @app.get("/DadosParceiros/{cnpj}")
 async def dados_parceiros(cnpj: str,token: str = Depends(authenticate)):
@@ -32,12 +54,3 @@ async def dados_parceiros(cnpj: str,token: str = Depends(authenticate)):
     teste = SERVICE.first()
     
     return teste
-
-@app.get("/ListagemParceiros")
-async def listagem(token: str = Depends(authenticate)):
-    
-    SERVICE = ListagemParceirosService()
-    teste = SERVICE.first()
-    
-    return teste
-
