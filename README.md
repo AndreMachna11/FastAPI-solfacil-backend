@@ -15,14 +15,24 @@
 git clone https://github.com/AndreMachna11/FastAPI-solfacil-backend.git
 ```
 
+```sh
 cd FastAPI-solfacil-backend
+```
 
+```sh
 pip install pipenv
+```
 
+```sh
 pipenv shell
+```
 
+```sh
 pipenv install pipfile
+```
 
+```sh
 uvicorn main:app --reload
+```
 
 # Instruçoes para Uso dos endpoints
