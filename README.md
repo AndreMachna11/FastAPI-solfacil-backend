@@ -10,7 +10,7 @@
 
   -EC2: Para hostear a API
 
-# Instruçoes para Execução:
+# Instruçoes para Execução
 
 git clone https://github.com/AndreMachna11/FastAPI-solfacil-backend.git
 
@@ -20,5 +20,8 @@ pip install pipenv
 
 pipenv shell
 
+pipenv install pipfile
+
 uvicorn main:app --reload
 
+# Instruçoes para Uso dos endpoints
