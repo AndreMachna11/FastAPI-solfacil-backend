@@ -13,7 +13,8 @@
 # Instruçoes para Execução
 ```sh
 git clone https://github.com/AndreMachna11/FastAPI-solfacil-backend.git
-'''
+```
+
 cd FastAPI-solfacil-backend
 
 pip install pipenv
