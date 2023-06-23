@@ -12,4 +12,5 @@
   -EC2 - Para hostear a API
 
 # Instruçoes para Execução:
-      
+
+
