@@ -36,3 +36,10 @@ uvicorn main:app --reload
 ```
 
 # Instruçoes para Uso dos endpoints
+
+*Todos os endpoints exigem um token no header da requisição, nesta api ele é unico e estatico 
+```sh
+d9520359df50574372fb8022fb56b90671cbf5c388132953a69b28d5ec37bfb6
+```
+
+
