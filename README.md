@@ -16,7 +16,7 @@ git clone https://github.com/AndreMachna11/FastAPI-solfacil-backend.git
 
 cd FastAPI-solfacil-backend
 
-pip3 install pipenv
+pip install pipenv
 
 pipenv shell
 
