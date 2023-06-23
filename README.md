@@ -53,5 +53,11 @@ Contendo apenas cnpjs:
 https://ucarecdn.com/a2123485-6b43-437b-a3be-8b7612367352/
 ```
 
+No caso de execução local, este link pode ser diretamente o endereço do arquivo do computador, por exemplo:
+```sh
+G:\\Drives compartilhados\\Andre\\Solfacil\\baseAtualizacaoModelo.csv
+```
+
+
 
 
