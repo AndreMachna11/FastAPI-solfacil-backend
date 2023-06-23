@@ -10,4 +10,6 @@
   -Route 53 - Para configuração de dominio e DNS
 
   -EC2 - Para hostear a API
+
+# Instruçoes para Execução:
       
