@@ -41,7 +41,7 @@ Todos os endpoints exigem um token no header da requisição, nesta api ele é u
 ```sh
 d9520359df50574372fb8022fb56b90671cbf5c388132953a69b28d5ec37bfb6
 ```
-So caso do csv especifico, para simular um dado vindo de um possivel front end, hosteei o csv de exemplo em um link e este link é passado no body do endpoint de atualização
+No caso do endopoint de atualizacao com csv, para simular um dado vindo de um possivel front end, hosteei o csv de exemplo em um link e este link é passado no body do endpoint de atualização
 
 Base completa:
 ```sh
@@ -53,11 +53,11 @@ Contendo apenas cnpjs:
 https://ucarecdn.com/a2123485-6b43-437b-a3be-8b7612367352/
 ```
 
-No caso de execução local, este link pode ser diretamente o endereço do arquivo do computador, por exemplo:
+Para execução local, este link pode ser diretamente o endereço do arquivo do computador, por exemplo:
 ```sh
 G:\\Drives compartilhados\\Andre\\Solfacil\\baseAtualizacaoModelo.csv
 ```
-
+No endpoint de DadosParceiros, so o numero "0" for passado no lugar de um cnpj especifico, as infs de todas as empresa serão exibidas
 
 
 
