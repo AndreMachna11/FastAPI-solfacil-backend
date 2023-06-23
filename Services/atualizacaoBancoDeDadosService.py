@@ -13,8 +13,11 @@ class AtualizacaoBancoDeDadosService():
     def verifica_base_cnpjs(self,url_csv):
         
         #Transforma url em DataFrame
-        base_input = pandas.read_csv(url_csv,keep_default_na=False)
-        
+        try:
+            base_input = pandas.read_csv(url_csv,keep_default_na=False)
+        except:
+            base_input = pandas.DataFrame()
+
         if base_input.empty == True:
             validador = False
         else:

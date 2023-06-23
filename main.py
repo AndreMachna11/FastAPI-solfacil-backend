@@ -21,13 +21,15 @@ async def redirect_to_docs():
 async def atualiza_banco_de_dados(Body: BodyAtualizacaoParceiros,token: str = Depends(authenticate)):
     
     SERVICE = AtualizacaoBancoDeDadosService()
+    
+    endereco_csv = Body.url_csv_hosteado
 
-    retorno = SERVICE.verifica_base_cnpjs(Body.url_csv_hosteado)
+    retorno = SERVICE.verifica_base_cnpjs(endereco_csv)
     base_input = retorno[0]
     validador = retorno[1]
 
     if validador == False:
-        content = {"mensagem" : "CSV contem cpf na coluna cnpj ou esta vazio - Reveja seus dados", "response": {}}
+        content = {"mensagem" : "CSV contem cpf na coluna cnpj, ou esta vazio, ou esta corrompido - Reveja seus dados", "response": {}}
         return JSONResponse(content=content, status_code=400)
 
     base_input = SERVICE.renomeia_colunas_data_frame(base_input)
@@ -48,9 +50,11 @@ async def listagem(token: str = Depends(authenticate)):
     return JSONResponse(content=parceiros_atuais, status_code=200)
 
 @app.get("/DadosParceiros/{cnpj}")
-async def dados_parceiros(cnpj: str,token: str = Depends(authenticate)):
+async def dados_parceiros(cnpj: int,token: str = Depends(authenticate)):
     
     SERVICE = DadosParceiros()
-    teste = SERVICE.first()
+    dados_parceiros = SERVICE.retorna_infs_parceiros(str(cnpj))
+    dados_parceiros = dados_parceiros.to_dict(orient='records')
     
-    return teste
+    return JSONResponse(content=dados_parceiros, status_code=200)
+
