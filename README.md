@@ -41,5 +41,17 @@ uvicorn main:app --reload
 ```sh
 d9520359df50574372fb8022fb56b90671cbf5c388132953a69b28d5ec37bfb6
 ```
+So caso do csv especifico, para simular um dado vindo de um possivel front end, hosteei o csv de exemplo em um link e este link é passado no body do endpoint de atualização
+
+Base completa:
+```sh
+https://ucarecdn.com/b840097e-41b2-4916-b0f5-299c6749be29/
+```
+
+Contendo apenas cnpjs:
+```sh
+https://ucarecdn.com/a2123485-6b43-437b-a3be-8b7612367352/
+```
+
 
 
